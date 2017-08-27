@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="datepicker/jquery.calendars.picker.css">
+    <script src="datepicker/jquery.min.js"></script>
+    <script src="datepicker/jquery.plugin.js"></script>
+    <script src="datepicker/jquery.calendars.js"></script>
+    <script src="datepicker/jquery.calendars-ar.js"></script>
+    <script src="datepicker/jquery.calendars.plus.js"></script>
+    <script src="datepicker/jquery.calendars.picker.js"></script>
+    <script src="datepicker/jquery.calendars.picker-ar-DZ.js"></script>
+    <script src="datepicker/jquery.calendars.ummalqura.js"></script>
+</head>
+
+<body>
+    <input type="text" id="dateTextbox">
+    <br/>
+    <select id="lstDateType">
+        <option value="-1">-- choose --</option>
+        <option value="gregorian">Greg.</option>
+        <option value="UmmAlQura">Hijri</option>
+    </select>
+</body>
+<script>
+    // $('#dateTextbox').calendarsPicker();
+    var dateCtr = $('#dateTextbox');
+
+    $("#lstDateType").change(function () {
+        var calType = this.value;
+        if (calType != -1) {
+            $(dateCtr).calendarsPicker('destroy')
+            $(dateCtr).calendarsPicker('clear');
+            $(dateCtr).calendarsPicker({
+                calendar: $.calendars.instance(calType, 'ar')
+            });
+                console.log(calType);
+            }
+    });
+
+</script>
+
+</html>
